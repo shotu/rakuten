@@ -1,6 +1,6 @@
 
 const { Parser } = require('json2csv');
-
+const fs = require('fs');
 exports.convertJsonTocsv = (jsonArrayData) => {
   return new Promise( (resolve, reject) => {
     try{
@@ -8,12 +8,12 @@ exports.convertJsonTocsv = (jsonArrayData) => {
       const json2csvParser = new Parser({ fields });
       const csv = json2csvParser.parse(jsonArrayData);
 
-      fs.writeFile('users.csv', csv, function(err) {
+      fs.writeFileSync('users.csv', csv, function(err) {
         if (err) throw err;
         console.log('cars file saved');
         resolve("users.csv");
       });  
-          
+
     }catch(e){
       reject(e);
     }

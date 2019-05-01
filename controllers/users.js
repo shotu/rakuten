@@ -4,8 +4,8 @@ exports.getUserDetailsCsv = (pageNumber, callback) => {
   thirdPartyController.getRegreUsersData(pageNumber).then(data =>{
     let usersArray = data.data; 
    return  helper.convertJsonTocsv(usersArray);
-  }).then(csv_data => {
-    callback(null, csv_data);
+  }).then(csv_name => {
+    callback(null, csv_name);
   })
   .catch(e=>{
     callback(e, null);
